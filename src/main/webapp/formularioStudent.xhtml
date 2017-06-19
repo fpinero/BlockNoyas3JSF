@@ -40,9 +40,12 @@
 			<h:message for="idName" display="text" styleClass="error"></h:message>
 			
 			<h:outputLabel for="idCurso" value="Curso:"/>
-			<p:inputText id="idCurso" value="#{student.curso}" label="curso" required="true">
-				<f:validateLength minimum="5"/>
-			</p:inputText>
+			<p:selectOneMenu id="idCurso" value="#{student.curso}" label="curso" required="true">
+				<f:selectItems value="#{student.cursosDisponibles}"></f:selectItems>
+			</p:selectOneMenu>
+			<!-- <p:inputText id="idCurso" value="#{student.curso}" label="curso" required="true"> -->
+				<!-- <f:validateLength minimum="5"/> -->
+			<!-- </p:inputText> -->
 			<h:message for="idCurso" display="text" styleClass="error"></h:message>
 			
 			<h:outputLabel for="idEdad" value="Edad:"/>

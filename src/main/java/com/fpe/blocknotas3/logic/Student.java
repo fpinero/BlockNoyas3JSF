@@ -7,6 +7,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
+import com.fpe.blocknotas3.persistenciavirtual.AlumnosAceptados;
+
 @ManagedBean
 public class Student {
 
@@ -67,6 +69,13 @@ public class Student {
 		System.out.println("numeroAleatorio = " + numeroAleatorio);
 		if (numeroAleatorio > 50) {
 			textoMsg = "El alumno " + name + " del curso " + curso + " de edad " + edad + " ha sido aceptado con el número: ";
+			//añadamos el alumno a la lista de los aceptados
+			Student aceptadoAlu = new Student();
+			aceptadoAlu.setName(name);
+			aceptadoAlu.setCurso(curso);
+			aceptadoAlu.setEdad(edad);
+			AlumnosAceptados aa = new AlumnosAceptados();
+			aa.aceptaAlumno(aceptadoAlu);
 		}
 		textoMsg += String.valueOf(numeroAleatorio);
 		addMessage(textoMsg);

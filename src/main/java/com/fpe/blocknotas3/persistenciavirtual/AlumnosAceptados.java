@@ -5,14 +5,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+
+import org.springframework.web.context.annotation.ApplicationScope;
 
 import com.fpe.blocknotas3.logic.Student;
 
 @ManagedBean
-@SessionScoped
+@ApplicationScope
 public class AlumnosAceptados implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8043895560130473836L;
 	public static List<Student> listaAlumnosAceptados = new ArrayList<>();
 
 	public AlumnosAceptados() {

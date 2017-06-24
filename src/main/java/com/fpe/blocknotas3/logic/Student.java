@@ -5,11 +5,14 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import com.fpe.blocknotas3.persistenciavirtual.AlumnosAceptados;
 
 @ManagedBean
+@ViewScoped
 public class Student {
 
 	private String name;
@@ -29,6 +32,12 @@ public class Student {
 		cursosDisponibles.add("Master en Explosivos");
 		cursosDisponibles.add("Ofimática para Managers");
 		cursosDisponibles.add("Saber expresarse en público");
+	}
+	
+	public Student(String name, String curso, Integer edad) {
+		this.name = name;
+		this.curso = curso;
+		this.edad = edad;
 	}
 
 	public String getName() {
@@ -86,5 +95,12 @@ public class Student {
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, null);
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
+
+	@Override
+	public String toString() {
+		return "Student [name=" + name + ", curso=" + curso + ", edad=" + edad + "]";
+	}
+	
+	
 
 }

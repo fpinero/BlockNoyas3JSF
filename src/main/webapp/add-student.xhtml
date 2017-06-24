@@ -17,21 +17,17 @@
 </h:head>
 
 <h:body>
-	<h1 align="center">Formulario Student</h1>
+	<h1 align="center">Add Student</h1>
 	<br />
+	
 	<p:growl id="growl" />
-
-	<!-- <h:form>
-		<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
-	</h:form> -->
-
-	<p:separator />
 
 	<h:form>
 		<!-- <p:panel header="Student Form"> -->
 
 		<h:panelGrid id="grid" columns="3" cellpadding="2">
-			<!-- <p:messages id="messages" showDetail="false" autoUpdate="true" closable="true" /> -->
+			<!-- <p:messages id="messages" showDetail="false" autoUpdate="true"
+				closable="true" /> -->
 
 			<h:outputLabel for="idName" value="Name:" />
 			<p:inputText id="idName" value="#{student.name}" label="nombre"
@@ -45,9 +41,6 @@
 				required="true">
 				<f:selectItems value="#{student.cursosDisponibles}"></f:selectItems>
 			</p:selectOneMenu>
-			<!-- <p:inputText id="idCurso" value="#{student.curso}" label="curso" required="true"> -->
-			<!-- <f:validateLength minimum="5"/> -->
-			<!-- </p:inputText> -->
 			<h:message for="idCurso" display="text" styleClass="error"></h:message>
 
 			<h:outputLabel for="idEdad" value="Edad:" />
@@ -60,34 +53,15 @@
 		</h:panelGrid>
 		<br />
 		<br />
-		<p:commandButton value="Imputar Alumno ajax" id="ajax"
-			update="growl grid tablaAlumnos" actionListener="#{student.isStudendtAccepted}"
+		<p:commandButton value="Añadir Alumno" update="growl grid"
+			action="#{studentController.addStudent(student)}"
 			styleClass="ui-priority-primary" icon="fa fa-check-circle" />
 
-		<!-- <p:commandButton id="submitButtom" value="Submit" update="grid"/> -->
-		<!-- </p:panel> -->
+		<p>
+			<p:link outcome="lista-db-students" value="Volver" />
+		</p>
 	</h:form>
 
-	<hr />
-
-	<p:dataTable id ="tablaAlumnos" var="st"
-		value="#{alumnosAceptados.listaAlumnosAceptados}" 
-		rowStyleClass="#{st.edad le 25 ? 'error' : null}"
-		scrollable="true" scrollHeight="150"
-		resizableColumns="true">
-		<p:column headerText="Nombre" sortBy="#{st.name}">
-			<h:outputText value="#{st.name}" />
-		</p:column>
-
-		<p:column headerText="Curso" sortBy="#{st.curso}">
-			<h:outputText value="#{st.curso}" />
-		</p:column>
-
-		<p:column headerText="Edad" sortBy="#{st.edad}">
-			<h:outputText value="#{st.edad}"  />
-		</p:column>
-
-	</p:dataTable>
 
 </h:body>
 

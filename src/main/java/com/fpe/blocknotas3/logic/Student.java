@@ -91,6 +91,10 @@ public class Student {
 		addMessage(textoMsg);
 
 	}
+	
+	public String giveName() {
+		return name;
+	}
 
 	public void addMessage(String summary) {
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, null);

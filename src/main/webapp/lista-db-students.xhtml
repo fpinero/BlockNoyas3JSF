@@ -5,49 +5,67 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-	
-	<f:metadata>
-		<f:event listener="#{studentController.loadStudents()}" type="preRenderView"></f:event>
-	</f:metadata>
-	
+
+<f:metadata>
+	<f:event listener="#{studentController.loadStudents()}"
+		type="preRenderView"></f:event>
+</f:metadata>
+
 <h:head>
 	<title>Basic Test DB connection</title>
 </h:head>
 
 <h:body>
 	<h1 align="center">Lista DB students</h1>
-	<hr/>
-	<br/>
-	
-	<p:button value="Añadir Student" outcome="add-student" icon="fa fa-user-secret"/>
-	
-	<br/>
+	<hr />
+	<br />
+
+	<p:button value="Añadir Student" outcome="add-student"
+		icon="fa fa-user-secret" />
+
+	<br />
+	<br />
 	<h:form>
-		<p:dataTable id ="tablaAlumnos" var="st"
-			value="#{studentController.students}" 
-			scrollable="true" scrollHeight="250"
-			resizableColumns="true">
+		<p:dataTable id="tablaAlumnos" var="st"
+			value="#{studentController.students}" scrollable="true"
+			scrollHeight="250" resizableColumns="true">
 			<p:column headerText="Nombre" sortBy="#{st.name}">
 				<h:outputText value="#{st.name}" />
 			</p:column>
-	
+
 			<p:column headerText="Curso" sortBy="#{st.curso}">
 				<h:outputText value="#{st.curso}" />
 			</p:column>
-	
+
 			<p:column headerText="Edad" sortBy="#{st.edad}">
-				<h:outputText value="#{st.edad}"  />
+				<h:outputText value="#{st.edad}" />
 			</p:column>
-			
-			<p:column headerText="Update" >
-				<p:commandLink action="#{studentController.loadStudent(st.name)}" value="Update" ajax="false" >
-					<f:actionListener binding="#{studentOldName.imputandoOldName(st.name)}" />
+
+			<p:column headerText="Update | Delete">
+				<p:commandLink action="#{studentController.loadStudent(st.name)}"
+					value="Update" ajax="false">
+					<f:actionListener
+						binding="#{studentOldName.imputandoOldName(st.name)}" />
 				</p:commandLink>
+				&nbsp;|&nbsp;
+				<p:commandLink
+					action="#{studentController.deleteStudent(st.name)}"
+					value="Delete">
+					<p:confirm header="Confirmation" message="¿Seguro que quiere eliminar al estudiante?"
+						icon="ui-icon-alert" />
+				</p:commandLink>
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					<p:commandButton value="Yes" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="No" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+
 			</p:column>
-	
+
 		</p:dataTable>
 	</h:form>
-	
+
 	<h:messages />
 
 </h:body>

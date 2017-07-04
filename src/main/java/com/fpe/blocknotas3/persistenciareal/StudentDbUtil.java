@@ -176,35 +176,23 @@ public class StudentDbUtil {
 
 	}
 
-//	public int giveMeStudentId(String studentName) throws Exception {
-//
-//		System.out.println("buscando id del student: " + studentName);
-//		Connection myConn = null;
-//		PreparedStatement myStmt = null;
-//		ResultSet myRs = null;
-//		try {
-//
-//			myConn = getConnection();
-//			String sql = "SELECT id FROM students WHERE nombre=?";
-//			myStmt = myConn.prepareStatement(sql);
-//			myStmt.setString(1, studentName);
-//			myRs = myStmt.executeQuery();
-//
-//			int id;
-//			if (myRs.next()) {
-//				System.out.println("leyemdo campo id de la DB");
-//				id = myRs.getInt("id");
-//				System.out.println("********* id=" + id + " **********");
-//			} else {
-//				throw new Exception("No encuentro el id del student " + studentName);
-//			}
-//
-//			return id;
-//
-//		} finally {
-//			close(myConn, myStmt, myRs);
-//		}
-//
-//	}
+	public void deleteStudent(String studentName) throws Exception {
+
+		System.out.println("eliminando student: " + studentName);
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		try {
+
+			myConn = getConnection();
+			String sql = "DELETE FROM students WHERE nombre=?";
+			myStmt = myConn.prepareStatement(sql);
+			myStmt.setString(1, studentName);
+			myStmt.execute();
+
+		} finally {
+			close(myConn, myStmt);
+		}
+
+	}
 
 }

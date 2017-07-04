@@ -103,20 +103,18 @@ public class StudentController {
 		return "lista-db-students?faces-redirect=true";
 	}
 
-//	public int findIdStudent(String studentName){
-//		
-//		logger.info("averiguando id del estudent: " + studentName);
-//		int id = 0;
-//		try{
-//			 id = studentDbUtil.giveMeStudentId(studentName);
-//		}catch (Exception e){
-//			logger.log(Level.SEVERE, "Error averiguando el id del student: " + studentName);
-//			addMessage(e.getMessage());
-//			return -1;
-//		}
-//		return id;
-//		
-//	}
+	public String deleteStudent(String studentName){
+		
+		logger.info("Eliminando: " + studentName);
+		int id = 0;
+		try{
+			 studentDbUtil.deleteStudent(studentName);
+		}catch (Exception e){
+			logger.log(Level.SEVERE, "Error eliminando el student: " + studentName);
+			addMessage(e.getMessage());
+		}
+		return "lista-db-students?faces-redirect=true";
+	}
 	
 	public void addMessage(String summary) {
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, null);

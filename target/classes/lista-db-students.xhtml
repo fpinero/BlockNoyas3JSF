@@ -51,7 +51,7 @@
 				<p:commandLink
 					action="#{studentController.deleteStudent(st.name)}"
 					value="Delete">
-					<p:confirm header="Confirmation" message="¿Seguro que quiere eliminar al estudiante?"
+					<p:confirm header="Confirmation" message="¿Seguro que quiere eliminar al estudiante #{st.name} ?"
 						icon="ui-icon-alert" />
 				</p:commandLink>
 				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">

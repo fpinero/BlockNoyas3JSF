@@ -31,7 +31,12 @@
 	
     <ui:param name="oldName" value="#{studentOldName.oldName}"></ui:param>
 	<p>
-	old student name=#{oldName}
+	<!-- old student name=#{oldName} -->
+	</p>
+	
+	<ui:param name="availableCurses" value="#{student.giveMeAvailableCourses()}"></ui:param>
+	<p>
+	<!-- availableCurses=#{availableCurses} -->
 	</p>
 	
 	<h:form>
@@ -51,7 +56,7 @@
 			<h:outputLabel for="idCurso" value="Curso:" />
 			<p:selectOneMenu id="idCurso" value="#{student.curso}" label="curso"
 				required="true">
-				<f:selectItems value="#{student.cursosDisponibles}"></f:selectItems>
+				<f:selectItems value="#{availableCurses}"></f:selectItems>
 			</p:selectOneMenu>
 			<h:message for="idCurso" display="text" styleClass="error"></h:message>
 

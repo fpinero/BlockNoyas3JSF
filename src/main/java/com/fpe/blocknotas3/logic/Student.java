@@ -35,6 +35,23 @@ public class Student {
 		cursosDisponibles.add("Saber expresarse en público");
 	}
 	
+	public List<String> giveMeAvailableCourses(){
+		
+		cursosDisponibles = new ArrayList<>();
+		
+		cursosDisponibles.add("Dinamica de Fluidos");
+		cursosDisponibles.add("Computación inicial");
+		cursosDisponibles.add("Experto en computación");
+		cursosDisponibles.add("Aerodinámica Avanzada");
+		cursosDisponibles.add("Inglés para Turismo");
+		cursosDisponibles.add("Master en Explosivos");
+		cursosDisponibles.add("Ofimática para Managers");
+		cursosDisponibles.add("Saber expresarse en público");
+		
+		return cursosDisponibles;
+		
+	}
+	
 	public Student(String name, String curso, Integer edad) {
 		this.name = name;
 		this.curso = curso;

@@ -10,7 +10,13 @@
 </h:head>
 
 <h:body>
-	<h1 align="center">Página pricipal</h1>
+	<h1 align="center">Página principal</h1>
+
+	<!-- Reloj -->
+	<h:form>
+		<p:clock pattern="HH:mm:ss dd.MM.yyyy" mode="server" />
+		<p/>
+	</h:form>
 
 	<div id="menu">
 
@@ -23,8 +29,7 @@
 				icon="fa fa-user-plus">
 				<f:param name="i" value="1" />
 			</p:menuitem>
-			<p:menuitem value=" Test DB" outcome="test-db"
-				icon="fa fa-codepen">
+			<p:menuitem value=" Test DB" outcome="test-db" icon="fa fa-codepen">
 				<f:param name="i" value="2" />
 			</p:menuitem>
 			<p:menuitem value=" Lista DB" outcome="lista-db-students"
